@@ -1,0 +1,31 @@
+= form_for @habit do |f|
+  -if @habit.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@habit.errors.count, "error")} prohibited this habit from being saved:"
+      %ul
+        - @habit.errors.full_messages.each do |msg|
+          %li= msg
+
+  / .field
+  /   = f.label :makebreak
+  /   = f.check_box :makebreak
+  .field
+    = f.label(:title, "What habit do you need help with?")
+    = f.text_field :title
+  .field
+    = f.label(:description, "Tell us more about this habit...")
+    = f.text_field :description
+  .field
+    = f.label :frequency
+    = f.number_field :frequency
+  .field
+    = f.label :duration
+    = f.number_field :duration
+  .field
+    = f.label :consequence
+    = f.text_field :consequence
+  .field
+    = f.label :referee_id
+    = f.number_field :referee_id
+  .actions
+    = f.submit 'Save'

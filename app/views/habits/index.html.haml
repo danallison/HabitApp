@@ -1,0 +1,33 @@
+%h1 Listing habits
+
+%table
+  %tr
+    %th Makebreak
+    %th Title
+    %th Description
+    %th Frequency
+    %th Duration
+    %th Consequence
+    %th User
+    %th Referee
+    %th
+    %th
+    %th
+
+  - @habits.each do |habit|
+    %tr
+      %td= habit.makebreak
+      %td= habit.title
+      %td= habit.description
+      %td= habit.frequency
+      %td= habit.duration
+      %td= habit.consequence
+      %td= habit.user_id
+      %td= habit.referee_id
+      %td= link_to 'Show', habit
+      %td= link_to 'Edit', edit_habit_path(habit)
+      %td= link_to 'Destroy', habit, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Habit', new_habit_path

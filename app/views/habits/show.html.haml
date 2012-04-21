@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Makebreak:
+  = @habit.makebreak
+%p
+  %b Title:
+  = @habit.title
+%p
+  %b Description:
+  = @habit.description
+%p
+  %b Frequency:
+  = @habit.frequency
+%p
+  %b Duration:
+  = @habit.duration
+%p
+  %b Consequence:
+  = @habit.consequence
+%p
+  %b User:
+  = @habit.user_id
+%p
+  %b Referee:
+  = @habit.referee_id
+
+= link_to 'Edit', edit_habit_path(@habit)
+\|
+= link_to 'Back', habits_path

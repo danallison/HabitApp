@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  makebreak: false
+  title: MyString
+  description: MyString
+  frequency: 1
+  duration: 1
+  consequence: MyString
+  user_id: 1
+  referee_id: 1
+
+two:
+  makebreak: false
+  title: MyString
+  description: MyString
+  frequency: 1
+  duration: 1
+  consequence: MyString
+  user_id: 1
+  referee_id: 1

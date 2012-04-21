@@ -1,5 +1,7 @@
 Habitapp::Application.routes.draw do
 
+  resources :habits
+
   root :to => "pages#landing"
 
 
