@@ -16,16 +16,20 @@
     = f.label(:description, "Tell us more about this habit...")
     = f.text_field :description
   .field
-    = f.label :frequency
-    = f.number_field :frequency
+    = f.label(:frequency, "How frequently do you plan to track this habit?")
+    %span
+      Every
+      = f.number_field :frequency
+      day(s)
   .field
-    = f.label :duration
+    = f.label(:duration, "How long do you want to track this habit?")
     = f.number_field :duration
+    days
   .field
-    = f.label :consequence
+    = f.label(:consequence, "If you fail, what consequences will you have to face? (Example: I can't drink coffee for a month!)")
     = f.text_field :consequence
   .field
-    = f.label :referee_id
+    = f.label(:referee_id, "In order to use HabitApp, you must have a referee to support you and hold you accountable. Enter their email address here, and we will send them an invite. (You can do this later if you want, but you can't track your progress until you have a referee.)")
     = f.number_field :referee_id
   .actions
     = f.submit 'Save'
