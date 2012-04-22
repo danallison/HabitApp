@@ -6,9 +6,9 @@
         - @habit.errors.full_messages.each do |msg|
           %li= msg
 
-  / .field
-  /   = f.label :makebreak
-  /   = f.check_box :makebreak
+  .field
+    = f.label :makebreak
+    = f.check_box :makebreak
   .field
     = f.label(:title, "What habit do you need help with?")
     = f.text_field :title

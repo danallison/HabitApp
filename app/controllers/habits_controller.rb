@@ -1,8 +1,11 @@
 class HabitsController < ApplicationController
+  
+  before_filter :logged_in
+  
   # GET /habits
   # GET /habits.json
   def index
-    @habits = Habit.all
+    @habits = @current_user.habits
 
     respond_to do |format|
       format.html # index.html.erb
@@ -40,7 +43,9 @@ class HabitsController < ApplicationController
   # POST /habits
   # POST /habits.json
   def create
-    @habit = Habit.new(params[:habit])
+    
+    @user = @current_user
+    @habit = @user.habits.new(params[:habit])
 
     respond_to do |format|
       if @habit.save
