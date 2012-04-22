@@ -9,7 +9,7 @@ Habitapp::Application.routes.draw do
   match '/auth/twitter/callback', to: 'sessions#create'
   match '/auth/twitter', :as => :twitter_auth
   
-  match "/dashboard" => "habits#index", :as => :dashboard
+  match "/myhabits" => "habits#index", :as => :my_habits
   match "/signout" => "sessions#destroy"
 
   # The priority is based upon order of creation:
