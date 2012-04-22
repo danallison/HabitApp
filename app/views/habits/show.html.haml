@@ -3,9 +3,11 @@
 / %p
 /   %b Makebreak:
 /   = @habit.makebreak
-%h1= @habit.title
+%h1 
+  Quit
+  = @habit.title
 #graph
-  = image_tag("/assets/loading.gif", :id => "loadingimage", :style => "margin:100px 300px;") 
+  /= image_tag("/assets/loading.gif", :id => "loadingimage", :style => "margin:100px 300px;") 
 / %p
 /   %b Description:
 /   = @habit.description

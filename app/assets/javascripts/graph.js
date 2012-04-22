@@ -53,11 +53,11 @@ function graph(data){
       .attr("id", function(d,i) { return "circle" + i });
             
   g.selectAll(".xLabel")
-      .data(x.ticks(5))
+      .data(data)
     .enter().append("svg:text")
       .attr("class", "xLabel")
-      .text(String)
-      .attr("x", function(d) { return x(d) })
+      .text(function (d,i) { return i })
+      .attr("x", function(d, i) { return x(i) })
       .attr("y", 0)
       .attr("text-anchor", "middle");
 
@@ -78,7 +78,7 @@ function graph(data){
       .attr("x1", function(d) { return x(d); })
       .attr("y1", -1 * y(0))
       .attr("x2", function(d) { return x(d); })
-      .attr("y2", -1 * y(-0.3));
+      .attr("y2", -1 * y(-0.1));
 
   g.selectAll(".yTicks")
       .data(y.ticks(4))
@@ -118,23 +118,36 @@ function graph(data){
       .attr("transform", "translate(" + (x(data.length) + 15) + "," + -1 * y((nextDataPoint/5) * 1.5) + "), rotate(180)")
       .attr("id", "arrowDown")
       .on("click", fail);
+      
+  var howDidYouDo = g.append("svg:text")
+      .attr("x", x(data.length - 4))
+      .attr("y", -1 * y(nextDataPoint/5 * 2))
+      .text("How did you do today?");
   
   function success(){
     data.push(nextDataPoint);
+    //$.post('/datapoints/'+datapoint.id, changes, onSuccess, 'json');
     console.log(data);
     lastCircle.transition().duration(1000).attr("cy", -1 * y(nextDataPoint) );
     lastLine.transition().duration(1000).attr("y2", -1 * y(nextDataPoint) );
     arrowUp.remove();
     arrowDown.remove();
+    howDidYouDo.remove();
+    g.append("svg:text")
+      .attr("x", x(data.length - 2.2))
+      .attr("y", -1 * y(nextDataPoint))
+      .text("YAY!");
   };
   
   function fail(){
     data.push(0);
+    //$.post('/datapoints/'+datapoint.id, changes, onSuccess, 'json');
     console.log(data);
     lastCircle.transition().duration(1000).attr("cy", -1 * y(0) );
     lastLine.transition().duration(1000).attr("y2", -1 * y(0) ); 
     arrowUp.remove();
     arrowDown.remove();
+    howDidYouDo.remove();
   };
   
 }//end graph()
