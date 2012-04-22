@@ -1,9 +1,16 @@
 Habitapp::Application.routes.draw do
 
+  resources :users
+
   resources :habits
 
   root :to => "pages#landing"
-
+    
+  match '/auth/twitter/callback', to: 'sessions#create'
+  match '/auth/twitter', :as => :twitter_auth
+  
+  match "/dashboard" => "habits#index", :as => :dashboard
+  match "/signout" => "sessions#destroy"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
