@@ -1,13 +1,11 @@
 function graph(data){
   var data = data;
-  var data2 = [];
-    data2.push(data);
-    data2.push(0);
+  var nextDataPoint = data[data.length - 1] + 1;
   var w = 960;
   var h = 500;
   var margin = 20;
   var y = d3.scale.linear().domain([0, d3.max(data) + 1]).range([0 + margin, h - margin]);
-  var x = d3.scale.linear().domain([0, data.length]).range([0 + margin, w - margin]);
+  var x = d3.scale.linear().domain([0, data.length + 1]).range([0 + margin, w - margin]);
   
   var svg = d3.select("#graph")
       .append("svg:svg")
@@ -24,6 +22,13 @@ function graph(data){
   g.append("svg:path").attr("d", line(data))
       .transition()
       .duration(1000);
+      
+  var lastLine = g.append("svg:line")
+      .attr("x1", x(data.length - 1))
+      .attr("y1", -1 * y(data[data.length - 1]))
+      .attr("x2", x(data.length))
+      .attr("y2", -1 * y(nextDataPoint/2))
+      .attr("id", "lastline");
   
   g.append("svg:line")
       .attr("x1", x(0))
@@ -35,7 +40,7 @@ function graph(data){
       .attr("x1", x(0))
       .attr("y1", -1 * y(0))
       .attr("x2", x(0))
-      .attr("y2", -1 * y(d3.max(data)));
+      .attr("y2", -1 * y(d3.max(data) + 1));
       
   g.selectAll("circle")
       .data(data)
@@ -81,22 +86,53 @@ function graph(data){
       .attr("x1", x(-0.3))
       .attr("y2", function(d) { return -1 * y(d); })
       .attr("x2", x(0));
+
       
-  var lastCircle = d3.select("#circle" + (data.length - 1));
+  var yellowCircle = g.append("svg:circle")
+      .attr("cx", x(data.length))
+      .attr("cy", -1 * y(nextDataPoint))
+      .attr("r", 0)
+      .attr("fill", "yellow")
+      .attr("id", "yellowcircle");
       
-  lastCircle.on("click", success);
+  var lastCircle = g.append("svg:circle")
+      .attr("cx", x(data.length))
+      .attr("cy", -1 * y(nextDataPoint/2))
+      .attr("r", 10)
+      .attr("id", "lastcircle");
+      
+  var arrowUp = g.append("svg:path")
+      .attr("width", 30)
+      .attr("height", 30)
+      .attr("d", "m0,30l15,-30l15,30l-30,0l0,0z")
+      .attr("transform", "translate(" + (x(data.length) - 15) + "," + -1 * y((nextDataPoint/5) * 3) + ")")
+      .attr("id", "arrowUp")
+      .on("click", success);
+      
+  var arrowDown = g.append("svg:path")
+      .attr("width", 30)
+      .attr("height", 30)
+      .attr("d", "m0,30l15,-30l15,30l-30,0l0,0z")
+      .attr("transform", "translate(" + (x(data.length) + 15) + "," + -1 * y((nextDataPoint/5) * 2) + "), rotate(180)")
+      .attr("id", "arrowDown")
+      .on("click", fail);
   
   function success(){
-    var nextDataPoint = data[data.length - 2] + 1;
-    data.pop();
     data.push(nextDataPoint);
     console.log(data);
     lastCircle.transition().duration(1000).attr("cy", -1 * y(nextDataPoint) );
-    line
-      //.data(data)
-      .y(function(d) { return -1 * y(d); });
-      //.transition()
-      //.duration(1000);
+    lastLine.transition().duration(1000).attr("y2", -1 * y(nextDataPoint) );
+    arrowUp.attr("transform", "translate(1000000, 1000000)");
+    arrowDown.attr("transform", "translate(1000000, 1000000)");
+  };
+  
+  function fail(){
+    data.push(0);
+    console.log(data);
+    lastCircle.transition().duration(1000).attr("cy", -1 * y(0) );
+    lastLine.transition().duration(1000).attr("y2", -1 * y(0) ); 
+    arrowUp.attr("transform", "translate(1000000, 1000000)");
+    arrowDown.attr("transform", "translate(1000000, 1000000)");   
   };
   
 }//end graph()

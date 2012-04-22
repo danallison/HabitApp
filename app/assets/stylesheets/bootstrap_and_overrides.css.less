@@ -36,10 +36,20 @@ label{
   margin-top: 30px;
 }
 
-path {
+path, #lastline {
     stroke: steelblue;
     stroke-width: 5;
     fill: none;
+}
+
+#arrowUp {
+  stroke-width: 0;
+  fill: green;
+}
+
+#arrowDown {
+  stroke-width: 0;
+  fill: red;
 }
 
 line {
@@ -50,29 +60,47 @@ line {
   width: 35px;
 }
 
+#landing_container{
+  margin: 0 auto;
+  width: 600px;
+  text-align: center;
+  text-transform:uppercase;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+  color: white;
+  font-size: 3em;
+}
+
 #landing_button_container {
-  margin: 80px auto;
+  margin: 0px auto 10px auto;
   width: 600px;
   background: yellow;
 }
+#pickone{
+  font-size: .5em;
+  line-height: 130%;
+  margin-top: 10px;
+}
 #make_button, #break_button{
-  font-size: 5em;
-  margin: 0 auto;
+  font-size: 1.5em;
+  margin: 30px auto;
   width: 250px;
   line-height: 120%;
   text-align: center;
-  text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
-  -moz-box-shadow:    2px 2px 8px 3px rgba(0,0,0,0.5);
-  -webkit-box-shadow: 2px 2px 8px 3px rgba(0,0,0,0.5);
-  box-shadow:         2px 2px 8px 3px rgba(0,0,0,0.5);
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+  -moz-box-shadow:    2px 2px 8px 3px rgba(0,0,0,0.2);
+  -webkit-box-shadow: 2px 2px 8px 3px rgba(0,0,0,0.2);
+  box-shadow:         2px 2px 8px 3px rgba(0,0,0,0.2);
 }
 #make_button{
-  background: blue;
+  background: steelblue;
   float: left;
   color: white;
 }
 #break_button{
   background: white;
   float: right;
-  color: blue;
+  color: steelblue;
+}
+#clear{
+  clear: both;
 }
