@@ -27,7 +27,7 @@ function graph(data){
       .attr("x1", x(data.length - 1))
       .attr("y1", -1 * y(data[data.length - 1]))
       .attr("x2", x(data.length))
-      .attr("y2", -1 * y(nextDataPoint/2))
+      .attr("y2", -1 * y(nextDataPoint/5 * 2))
       .attr("id", "lastline");
   
   g.append("svg:line")
@@ -88,16 +88,16 @@ function graph(data){
       .attr("x2", x(0));
 
       
-  var yellowCircle = g.append("svg:circle")
-      .attr("cx", x(data.length))
-      .attr("cy", -1 * y(nextDataPoint))
-      .attr("r", 0)
-      .attr("fill", "yellow")
-      .attr("id", "yellowcircle");
+  // var yellowCircle = g.append("svg:circle")
+  //     .attr("cx", x(data.length))
+  //     .attr("cy", -1 * y(nextDataPoint))
+  //     .attr("r", 0)
+  //     .attr("fill", "yellow")
+  //     .attr("id", "yellowcircle");
       
   var lastCircle = g.append("svg:circle")
       .attr("cx", x(data.length))
-      .attr("cy", -1 * y(nextDataPoint/2))
+      .attr("cy", -1 * y(nextDataPoint/5 * 2))
       .attr("r", 10)
       .attr("id", "lastcircle");
       
@@ -105,7 +105,7 @@ function graph(data){
       .attr("width", 30)
       .attr("height", 30)
       .attr("d", "m0,30l15,-30l15,30l-30,0l0,0z")
-      .attr("transform", "translate(" + (x(data.length) - 15) + "," + -1 * y((nextDataPoint/5) * 3) + ")")
+      .attr("transform", "translate(" + (x(data.length) - 15) + "," + -1 * y((nextDataPoint/5) * 2.5) + ")")
       .attr("id", "arrowUp")
       .on("click", success);
       
@@ -113,7 +113,7 @@ function graph(data){
       .attr("width", 30)
       .attr("height", 30)
       .attr("d", "m0,30l15,-30l15,30l-30,0l0,0z")
-      .attr("transform", "translate(" + (x(data.length) + 15) + "," + -1 * y((nextDataPoint/5) * 2) + "), rotate(180)")
+      .attr("transform", "translate(" + (x(data.length) + 15) + "," + -1 * y((nextDataPoint/5) * 1.5) + "), rotate(180)")
       .attr("id", "arrowDown")
       .on("click", fail);
   
