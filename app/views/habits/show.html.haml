@@ -5,6 +5,7 @@
 /   = @habit.makebreak
 %h1= @habit.title
 #graph
+  = image_tag("/assets/loading.gif", :id => "loadingimage", :style => "margin:100px 300px;") 
 / %p
 /   %b Description:
 /   = @habit.description
@@ -29,4 +30,4 @@
 = link_to 'Back', habits_path
 
 :javascript
-  setTimeout("graph([0,1,2,3,4,5,6,0,1,2,3,4,5,0,1,2,3,4,5,6,7,8,9])", 1500)
+  window.onload = function(){graph([0,1,2,3,4,5,6,0,1,2,3,4,5,0,1,2,3,4,5,6,7,8,9])}

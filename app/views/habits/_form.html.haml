@@ -7,30 +7,26 @@
           %li= msg
 
   .field
-    = f.label :makebreak
+    /= f.label :makebreak
     = f.check_box :makebreak
   .field
-    = f.label(:title, "What habit do you need help with?")
+    I want to break the habit of
     = f.text_field :title
-  .field
-    = f.label(:description, "Tell us more about this habit...")
+    because
     = f.text_field :description
   .field
-    = f.label(:frequency, "How frequently do you plan to track this habit?")
-    %span
-      Every
-      = f.number_field :frequency
-      day(s)
-  .field
-    = f.label(:duration, "How long do you want to track this habit?")
+    I will track my progress every
+    = f.number_field :frequency
+    day(s),
+    for
     = f.number_field :duration
-    days
+    days.
   .field
-    = f.label(:consequence, "If you fail, what consequences will you have to face? (Example: I can't drink coffee for a month!)")
+    If I relapse, the consequence will be
     = f.text_field :consequence
   .field
-    = f.label(:referee_id, "In order to use HabitApp, you must have a referee to support you and hold you accountable. Enter their email address here, and we will send them an invite. (You can do this later if you want, but you can't track your progress until you have a referee.)")
     = f.number_field :referee_id
+    will act as my referee and hold me accountable to this commitment. Their email address is
   .actions
     = f.submit 'Save'
     

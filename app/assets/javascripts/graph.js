@@ -1,4 +1,6 @@
 function graph(data){
+  d3.select("#loadingimage").remove();
+  
   var data = data;
   var nextDataPoint = data[data.length - 1] + 1;
   var w = 960;
@@ -122,8 +124,8 @@ function graph(data){
     console.log(data);
     lastCircle.transition().duration(1000).attr("cy", -1 * y(nextDataPoint) );
     lastLine.transition().duration(1000).attr("y2", -1 * y(nextDataPoint) );
-    arrowUp.attr("transform", "translate(1000000, 1000000)");
-    arrowDown.attr("transform", "translate(1000000, 1000000)");
+    arrowUp.remove();
+    arrowDown.remove();
   };
   
   function fail(){
@@ -131,8 +133,8 @@ function graph(data){
     console.log(data);
     lastCircle.transition().duration(1000).attr("cy", -1 * y(0) );
     lastLine.transition().duration(1000).attr("y2", -1 * y(0) ); 
-    arrowUp.attr("transform", "translate(1000000, 1000000)");
-    arrowDown.attr("transform", "translate(1000000, 1000000)");   
+    arrowUp.remove();
+    arrowDown.remove();
   };
   
 }//end graph()
