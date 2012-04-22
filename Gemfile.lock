@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/arunagw/omniauth-twitter.git
+  revision: 43c61bac36056c5f44801d57a59fc3c70c9a6ffe
+  specs:
+    omniauth-twitter (0.0.10)
+      multi_json (~> 1.3)
+      omniauth-oauth (~> 1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -48,6 +56,7 @@ GEM
       activesupport (~> 3.0)
       haml (~> 3.0)
       railties (~> 3.0)
+    hashie (1.2.0)
     heroku (2.24.1)
       launchy (>= 0.3.2)
       netrc (~> 0.7.1)
@@ -76,6 +85,13 @@ GEM
     mime-types (1.18)
     multi_json (1.3.2)
     netrc (0.7.1)
+    oauth (0.4.6)
+    omniauth (1.1.0)
+      hashie (~> 1.2)
+      rack
+    omniauth-oauth (1.0.1)
+      oauth
+      omniauth (~> 1.0)
     pg (0.13.2)
     polyglot (0.3.3)
     rack (1.4.1)
@@ -141,6 +157,8 @@ DEPENDENCIES
   haml-rails
   heroku
   jquery-rails
+  omniauth
+  omniauth-twitter!
   pg
   rails (= 3.2.1)
   sass-rails (~> 3.2.3)

@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  datapointgroup_id: 1
+  done: false
+
+two:
+  datapointgroup_id: 1
+  done: false

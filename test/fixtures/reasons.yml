@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  habit_id: 1
+  name: MyString
+  description: MyText
+  image_url: MyString
+
+two:
+  habit_id: 1
+  name: MyString
+  description: MyText
+  image_url: MyString

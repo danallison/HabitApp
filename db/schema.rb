@@ -11,7 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120421222606) do
+ActiveRecord::Schema.define(:version => 20120422170742) do
+
+  create_table "datapointgroups", :force => true do |t|
+    t.integer  "habit_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "datapoints", :force => true do |t|
+    t.integer  "datapointgroup_id"
+    t.boolean  "done"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  create_table "habit_referees", :force => true do |t|
+    t.integer  "habit_id"
+    t.integer  "referee_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "habits", :force => true do |t|
     t.boolean  "makebreak"
@@ -24,6 +44,36 @@ ActiveRecord::Schema.define(:version => 20120421222606) do
     t.integer  "referee_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "reasons", :force => true do |t|
+    t.integer  "habit_id"
+    t.string   "name"
+    t.text     "description"
+    t.string   "image_url"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "referees", :force => true do |t|
+    t.string   "name"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email_address"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "email_address"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "provider"
+    t.string   "uid"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.string   "name"
+    t.string   "twitter_handle"
   end
 
 end
