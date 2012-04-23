@@ -15,3 +15,5 @@
 /tmp
 
 config/api_keys.yml
+.DS_Store*
+config/initializers/api_key_config.rb

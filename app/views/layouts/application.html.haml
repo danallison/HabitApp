@@ -22,10 +22,11 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.brand(href=dashboard_url) Habitapp
+          %a.brand(href=my_habits_url) Habitapp
           .container.nav-collapse
             %ul.nav
-              %li= link_to "My Habits", dashboard_path
+
+              %li= link_to "My Habits", :my_habits
               %li= link_to "Log Out", signout_path
 
     .container-fluid
